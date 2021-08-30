@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\DepartmentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'home']);
 Route::get('/tickets', [HomeController::class, 'tickets']);
 Route::get('/tickets/create', [HomeController::class, 'createTicket']);
+
+// Rotas de Departamentos
+Route::get('/departments/', [DepartmentController::class, 'index'])->name('departments.index');
+Route::get('/departments/create', [DepartmentController::class, 'create'])->name('departments.create');
+Route::post('/departments/store', [DepartmentController::class, 'store'])->name('departments.store');
+Route::get('/departments/{id}/destroy', [DepartmentController::class, 'destroy'])->name('departments.destroy');

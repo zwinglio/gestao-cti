@@ -1,6 +1,6 @@
 <template>
   <div>
-      <Navbar />
+    <Navbar />
       <slot />
   </div>
 </template>
@@ -16,6 +16,16 @@ export default {
 
 <style>
 section {
-    padding: 35px;
+  padding: 35px;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s ease-out;
+}
+
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

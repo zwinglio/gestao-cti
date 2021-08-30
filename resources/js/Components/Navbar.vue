@@ -26,8 +26,8 @@
                 >
               </li>
               <li class="nav-item">
-                <Link class="nav-link" aria-current="page" href="/tickets"
-                  >Almoxarifado</Link
+                <Link class="nav-link" aria-current="page" href="/departments"
+                  >Departamentos</Link
                 >
               </li>
             </ul>

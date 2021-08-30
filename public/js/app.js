@@ -43204,6 +43204,22 @@ function compileToFunction(template, options) {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 var map = {
+	"./Departments": [
+		"./resources/js/Pages/Departments.vue",
+		"resources_js_Pages_Departments_vue"
+	],
+	"./Departments.vue": [
+		"./resources/js/Pages/Departments.vue",
+		"resources_js_Pages_Departments_vue"
+	],
+	"./Departments/Create": [
+		"./resources/js/Pages/Departments/Create.vue",
+		"resources_js_Pages_Departments_Create_vue"
+	],
+	"./Departments/Create.vue": [
+		"./resources/js/Pages/Departments/Create.vue",
+		"resources_js_Pages_Departments_Create_vue"
+	],
 	"./Home": [
 		"./resources/js/Pages/Home.vue",
 		"resources_js_Pages_Home_vue"
@@ -43374,7 +43390,7 @@ module.exports = webpackAsyncContext;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_Pages_Home_vue":1,"resources_js_Pages_Tickets_vue":1,"resources_js_Pages_Tickets_Create_vue":1,"resources_js_Pages_Tickets_Index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_Pages_Departments_vue":1,"resources_js_Pages_Departments_Create_vue":1,"resources_js_Pages_Home_vue":1,"resources_js_Pages_Tickets_vue":1,"resources_js_Pages_Tickets_Create_vue":1,"resources_js_Pages_Tickets_Index_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
