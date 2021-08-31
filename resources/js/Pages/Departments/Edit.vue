@@ -5,7 +5,8 @@
     </Head>
 
     <section class="create-departments">
-      <div class="container">
+        {{ department }}
+      <!-- <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8">
             <h1>Criação de Departamentos</h1>
@@ -123,7 +124,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </section>
   </Layout>
 </template>
@@ -132,7 +133,9 @@
 import Layout from "../../Layout";
 
 export default {
-  props: {},
+  props: {
+      data: data,
+  },
   components: { Layout },
   data: () => ({
     csrf: document

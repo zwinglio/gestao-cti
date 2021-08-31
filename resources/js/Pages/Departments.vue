@@ -37,7 +37,7 @@
               <td>{{ department.responsavel }}</td>
               <td>{{ department.tipo }}</td>
               <td>
-                <a href="#" class="btn btn-sm btn-info">Editar</a>
+                <Link :href="$route('department.edit', {id: department.id})" :data="teste" class="btn btn-sm btn-info">Editar</Link>
                 <ButtonDelete :data="department" :routePrefix="'departments'">
                   Departamento: {{ department.nome }}
                 </ButtonDelete>

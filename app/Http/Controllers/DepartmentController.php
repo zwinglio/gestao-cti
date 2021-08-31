@@ -55,6 +55,11 @@ class DepartmentController extends Controller
     // Formulário de edição de departamentos
     public function edit($id)
     {
+        $department = Department::findOrFail($id);
+
+        return Inertia::render('Departments/Edit', [
+            'departments' => $department,
+        ]);
     }
 
     // Armazena alterações no banco de dados
