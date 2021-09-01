@@ -83,6 +83,6 @@ class DepartmentController extends Controller
     public function destroy($id)
     {
         Department::destroy($id);
-        return $this->index();
+        return Redirect::route('departments.index');
     }
 }

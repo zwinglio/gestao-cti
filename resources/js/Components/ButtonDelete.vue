@@ -1,11 +1,11 @@
 <template>
   <!-- Botão visível -->
-  <a
-    :href="`/departments/${id}/destroy`"
+  <Link
+    :href="`departments/${data.id}`"
     class="btn btn-danger btn-sm ms-2"
     data-bs-toggle="modal"
     data-bs-target="#modalDelete"
-    >Excluir</a
+    >Excluir</Link
   >
 
   <!-- Modal -->
@@ -41,12 +41,15 @@
           >
             Cancelar
           </button>
-          <a
+          <Link
+            as="button"
             class="btn btn-danger"
-            :href="`/${routePrefix}/${data.id}/destroy`"
+            :href="`/${routePrefix}/${data.id}`"
+            method="delete"
+            data-bs-dismiss="modal"
           >
             Deletar
-          </a>
+          </Link>
         </div>
       </div>
     </div>
@@ -54,8 +57,16 @@
 </template>
 
 <script>
+import { Link } from "@inertiajs/inertia-vue3";
+
 export default {
+  components: {
+    Link,
+  },
   props: ["data", "routePrefix"],
+  methods: {
+    deleteData: {},
+  },
 };
 </script>
 
