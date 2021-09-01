@@ -13,7 +13,7 @@ class DepartmentController extends Controller
     // Lista dos departamentos
     public function index()
     {
-        $departments = Department::all();
+        $departments = Department::latest()->get();
 
         return Inertia::render('Departments', [
             'departments' => $departments,
@@ -27,24 +27,23 @@ class DepartmentController extends Controller
     }
     
     // Armazena o departamento no banco dedados
-    public function store(Request $request)
+    public function store()
     {
         // Cria a entendidade
         $department = new Department;
 
         // Pega os dados do request
-        $department->nome = $request->nome;
-        $department->tipo = $request->tipo;
-        $department->responsavel = $request->responsavel;
-        $department->telefone = $request->telefone;
-        $department->ramal = $request->ramal;
-        $department->email = $request->email;
+        $department->nome = request('nome');
+        $department->tipo = request('tipo');
+        $department->responsavel = request('responsavel');
+        $department->telefone = request('telefone');
+        $department->ramal = request('ramal');
+        $department->email = request('email');
 
         // Salva do banco de dados
         $department->save();
 
-        return Redirect::route('departments.index');
-        // $this->index();
+        return Redirect::route('departments.index')->with('success', 'Departamento criado!');
     }
 
     // Detalhes dos departamentos
@@ -58,18 +57,32 @@ class DepartmentController extends Controller
         $department = Department::findOrFail($id);
 
         return Inertia::render('Departments/Edit', [
-            'departments' => $department,
+            'department' => $department,
         ]);
     }
 
     // Armazena alterações no banco de dados
-    public function update($id)
+    public function update(int $id)
     {
+        $department = Department::findOrFail($id);
+
+        // Pega os dados do request
+        $department->nome = request('nome');
+        $department->tipo = request('tipo');
+        $department->responsavel = request('responsavel');
+        $department->telefone = request('telefone');
+        $department->ramal = request('ramal');
+        $department->email = request('email');
+
+        // Salva as alterações
+        $department->save();
+
+        return Redirect::route('departments.index');
     }
 
     public function destroy($id)
     {
         Department::destroy($id);
-        return Redirect::route('departments.index');
+        return $this->index();
     }
 }

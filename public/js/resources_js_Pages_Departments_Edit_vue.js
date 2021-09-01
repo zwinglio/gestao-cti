@@ -55,18 +55,43 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var _Layout__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../Layout */ "./resources/js/Layout.vue");
+/* harmony import */ var _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @inertiajs/inertia-vue3 */ "./node_modules/@inertiajs/inertia-vue3/dist/index.js");
+
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
-  props: {
-    data: data
-  },
   components: {
-    Layout: _Layout__WEBPACK_IMPORTED_MODULE_0__.default
+    Head: _inertiajs_inertia_vue3__WEBPACK_IMPORTED_MODULE_1__.Head
   },
+  layout: _Layout__WEBPACK_IMPORTED_MODULE_0__.default,
+  props: {
+    department: Object
+  },
+  remember: "form",
   data: function data() {
     return {
-      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute("content")
+      csrf: document.querySelector('meta[name="csrf-token"]').getAttribute("content"),
+      form: {
+        nome: this.department.nome,
+        tipo: this.department.tipo,
+        responsavel: this.department.responsavel,
+        email: this.department.email,
+        telefone: this.department.telefone,
+        ramal: this.department.ramal
+      }
     };
+  },
+  methods: {
+    submit: function submit() {
+      var data = new FormData();
+      data.append("nome", this.form.nome);
+      data.append("tipo", this.form.tipo);
+      data.append("responsavel", this.form.responsavel);
+      data.append("email", this.form.email);
+      data.append("telefone", this.form.telefone);
+      data.append("ramal", this.form.ramal);
+      data.append("_method", 'put');
+      this.$inertia.post('/departments/' + this.department.id, data);
+    }
   }
 });
 
@@ -224,6 +249,141 @@ var _hoisted_1 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementV
 var _hoisted_2 = {
   "class": "create-departments"
 };
+var _hoisted_3 = {
+  "class": "container"
+};
+
+var _hoisted_4 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "row justify-content-center"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-lg-8"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("h1", null, "Atualizar Departamentos"), /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr")])], -1
+/* HOISTED */
+);
+
+var _hoisted_5 = {
+  "class": "row justify-content-center"
+};
+var _hoisted_6 = {
+  "class": "col-lg-8"
+};
+var _hoisted_7 = {
+  "class": "card"
+};
+var _hoisted_8 = {
+  "class": "card-body"
+};
+var _hoisted_9 = {
+  "class": "row mb-4"
+};
+var _hoisted_10 = {
+  "class": "col-lg-8"
+};
+
+var _hoisted_11 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "department_nome",
+  "class": "form-label"
+}, "Nome do departamento:", -1
+/* HOISTED */
+);
+
+var _hoisted_12 = {
+  "class": "col-lg-4"
+};
+
+var _hoisted_13 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "department_tipo",
+  "class": "form-label"
+}, "Tipo do departamento:", -1
+/* HOISTED */
+);
+
+var _hoisted_14 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "Administrativo"
+}, "Administrativo", -1
+/* HOISTED */
+);
+
+var _hoisted_15 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "Gabinete"
+}, "Gabinete", -1
+/* HOISTED */
+);
+
+var _hoisted_16 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("option", {
+  value: "Externo"
+}, "Externo", -1
+/* HOISTED */
+);
+
+var _hoisted_17 = [_hoisted_14, _hoisted_15, _hoisted_16];
+var _hoisted_18 = {
+  "class": "row mb-4"
+};
+var _hoisted_19 = {
+  "class": "col-lg-7"
+};
+
+var _hoisted_20 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "department_nome",
+  "class": "form-label"
+}, "Responsável:", -1
+/* HOISTED */
+);
+
+var _hoisted_21 = {
+  "class": "col-lg-5"
+};
+
+var _hoisted_22 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "department_nome",
+  "class": "form-label"
+}, "E-mail para contato:", -1
+/* HOISTED */
+);
+
+var _hoisted_23 = {
+  "class": "row mb-4"
+};
+var _hoisted_24 = {
+  "class": "col-lg-9"
+};
+
+var _hoisted_25 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "department_nome",
+  "class": "form-label"
+}, "Telefone para contato:", -1
+/* HOISTED */
+);
+
+var _hoisted_26 = {
+  "class": "col-lg-3"
+};
+
+var _hoisted_27 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("label", {
+  "for": "department_nome",
+  "class": "form-label"
+}, "Ramal:", -1
+/* HOISTED */
+);
+
+var _hoisted_28 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("hr", null, null, -1
+/* HOISTED */
+);
+
+var _hoisted_29 = ["value"];
+
+var _hoisted_30 = /*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "row justify-content-end"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", {
+  "class": "col-lg-4 text-end"
+}, [/*#__PURE__*/(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("button", {
+  type: "submit",
+  "class": "btn btn-info text-white mt-2 w-100"
+}, " Atualizar Departamento ")])], -1
+/* HOISTED */
+);
+
 function render(_ctx, _cache, $props, $setup, $data, $options) {
   var _component_Head = (0,vue__WEBPACK_IMPORTED_MODULE_0__.resolveComponent)("Head");
 
@@ -238,9 +398,87 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
         _: 1
         /* STABLE */
 
-      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createTextVNode)((0,vue__WEBPACK_IMPORTED_MODULE_0__.toDisplayString)(_ctx.department), 1
-      /* TEXT */
-      ), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createCommentVNode)(" <div class=\"container\">\r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-lg-8\">\r\n            <h1>Criação de Departamentos</h1>\r\n            <hr />\r\n          </div>\r\n        </div>\r\n\r\n        <div class=\"row justify-content-center\">\r\n          <div class=\"col-lg-8\">\r\n            <div class=\"card\">\r\n              <div class=\"card-body\">\r\n                <form method=\"POST\" action=\"/departments/store\">\r\n                  <div class=\"row mb-4\">\r\n                    <div class=\"col-lg-8\">\r\n                      <label for=\"department_nome\" class=\"form-label\"\r\n                        >Nome do departamento:</label\r\n                      >\r\n                      <input\r\n                        type=\"text\"\r\n                        class=\"form-control\"\r\n                        id=\"department_nome\"\r\n                        name=\"nome\"\r\n                        required\r\n                      />\r\n                    </div>\r\n\r\n                    <div class=\"col-lg-4\">\r\n                      <label for=\"department_tipo\" class=\"form-label\"\r\n                        >Tipo do departamento:</label\r\n                      >\r\n                      <select\r\n                        name=\"tipo\"\r\n                        id=\"department_tipo\"\r\n                        class=\"form-select\"\r\n                        required\r\n                      >\r\n                        <option value=\"Administrativo\">Administrativo</option>\r\n                        <option value=\"Gabinete\">Gabinete</option>\r\n                        <option value=\"Externo\">Externo</option>\r\n                      </select>\r\n                    </div>\r\n                  </div>\r\n\r\n                  <div class=\"row mb-4\">\r\n                    <div class=\"col-lg-7\">\r\n                      <label for=\"department_nome\" class=\"form-label\"\r\n                        >Responsável:</label\r\n                      >\r\n                      <input\r\n                        type=\"text\"\r\n                        class=\"form-control\"\r\n                        id=\"department_responsavel\"\r\n                        name=\"responsavel\"\r\n                        required\r\n                      />\r\n                    </div>\r\n                    <div class=\"col-lg-5\">\r\n                      <label for=\"department_nome\" class=\"form-label\"\r\n                        >E-mail para contato:</label\r\n                      >\r\n                      <input\r\n                        type=\"email\"\r\n                        class=\"form-control\"\r\n                        id=\"department_email\"\r\n                        name=\"email\"\r\n                        placeholder=\"email@provedor.com\"\r\n                        required\r\n                      />\r\n                    </div>\r\n                  </div>\r\n\r\n                  <div class=\"row mb-4\">\r\n                    <div class=\"col-lg-9\">\r\n                      <label for=\"department_nome\" class=\"form-label\"\r\n                        >Telefone para contato:</label\r\n                      >\r\n                      <input\r\n                        type=\"text\"\r\n                        class=\"form-control\"\r\n                        id=\"department_telefone\"\r\n                        name=\"telefone\"\r\n                        placeholder=\"84 9 9999 8888\"\r\n                        required\r\n                      />\r\n                    </div>\r\n\r\n                    <div class=\"col-lg-3\">\r\n                      <label for=\"department_nome\" class=\"form-label\"\r\n                        >Ramal:</label\r\n                      >\r\n                      <input\r\n                        type=\"text\"\r\n                        class=\"form-control\"\r\n                        id=\"department_ramal\"\r\n                        name=\"ramal\"\r\n                        placeholder=\"5599\"\r\n                        required\r\n                      />\r\n                    </div>\r\n                  </div>\r\n                  <hr />\r\n                  <input type=\"hidden\" name=\"_token\" :value=\"csrf\" />\r\n                  <div class=\"row justify-content-end\">\r\n                    <div class=\"col-lg-4 text-end\">\r\n                      <button\r\n                        type=\"submit\"\r\n                        class=\"btn btn-success text-white mt-2 w-100\"\r\n                      >\r\n                        Cadastrar Departamento\r\n                      </button>\r\n                    </div>\r\n                  </div>\r\n                </form>\r\n              </div>\r\n            </div>\r\n          </div>\r\n        </div>\r\n      </div> ")])];
+      }), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("section", _hoisted_2, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_3, [_hoisted_4, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_5, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_6, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_7, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_8, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("form", {
+        onSubmit: _cache[6] || (_cache[6] = (0,vue__WEBPACK_IMPORTED_MODULE_0__.withModifiers)(function () {
+          return $options.submit && $options.submit.apply($options, arguments);
+        }, ["prevent"]))
+      }, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_9, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_10, [_hoisted_11, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        type: "text",
+        "class": "form-control",
+        id: "department_nome",
+        name: "nome",
+        required: "",
+        "onUpdate:modelValue": _cache[0] || (_cache[0] = function ($event) {
+          return $data.form.nome = $event;
+        })
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.nome]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_12, [_hoisted_13, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("select", {
+        name: "tipo",
+        id: "department_tipo",
+        "class": "form-select",
+        required: "",
+        "onUpdate:modelValue": _cache[1] || (_cache[1] = function ($event) {
+          return $data.form.tipo = $event;
+        })
+      }, _hoisted_17, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelSelect, $data.form.tipo]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_18, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_19, [_hoisted_20, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        type: "text",
+        "class": "form-control",
+        id: "department_responsavel",
+        name: "responsavel",
+        "onUpdate:modelValue": _cache[2] || (_cache[2] = function ($event) {
+          return $data.form.responsavel = $event;
+        }),
+        required: ""
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.responsavel]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_21, [_hoisted_22, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        type: "email",
+        "class": "form-control",
+        id: "department_email",
+        name: "email",
+        placeholder: "email@provedor.com",
+        "onUpdate:modelValue": _cache[3] || (_cache[3] = function ($event) {
+          return $data.form.email = $event;
+        }),
+        required: ""
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.email]])])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_23, [(0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_24, [_hoisted_25, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        type: "text",
+        "class": "form-control",
+        id: "department_telefone",
+        name: "telefone",
+        placeholder: "84 9 9999 8888",
+        "onUpdate:modelValue": _cache[4] || (_cache[4] = function ($event) {
+          return $data.form.telefone = $event;
+        }),
+        required: ""
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.telefone]])]), (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("div", _hoisted_26, [_hoisted_27, (0,vue__WEBPACK_IMPORTED_MODULE_0__.withDirectives)((0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        type: "text",
+        "class": "form-control",
+        id: "department_ramal",
+        name: "ramal",
+        placeholder: "5599",
+        "onUpdate:modelValue": _cache[5] || (_cache[5] = function ($event) {
+          return $data.form.ramal = $event;
+        }),
+        required: ""
+      }, null, 512
+      /* NEED_PATCH */
+      ), [[vue__WEBPACK_IMPORTED_MODULE_0__.vModelText, $data.form.ramal]])])]), _hoisted_28, (0,vue__WEBPACK_IMPORTED_MODULE_0__.createElementVNode)("input", {
+        type: "hidden",
+        name: "_token",
+        value: $data.csrf
+      }, null, 8
+      /* PROPS */
+      , _hoisted_29), _hoisted_30], 32
+      /* HYDRATE_EVENTS */
+      )])])])])])])];
     }),
     _: 1
     /* STABLE */

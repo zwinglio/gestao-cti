@@ -5,11 +5,10 @@
     </Head>
 
     <section class="create-departments">
-        {{ department }}
-      <!-- <div class="container">
+      <div class="container">
         <div class="row justify-content-center">
           <div class="col-lg-8">
-            <h1>Criação de Departamentos</h1>
+            <h1>Atualizar Departamentos</h1>
             <hr />
           </div>
         </div>
@@ -18,7 +17,7 @@
           <div class="col-lg-8">
             <div class="card">
               <div class="card-body">
-                <form method="POST" action="/departments/store">
+                <form @submit.prevent="submit">
                   <div class="row mb-4">
                     <div class="col-lg-8">
                       <label for="department_nome" class="form-label"
@@ -30,6 +29,7 @@
                         id="department_nome"
                         name="nome"
                         required
+                        v-model="form.nome"
                       />
                     </div>
 
@@ -42,6 +42,7 @@
                         id="department_tipo"
                         class="form-select"
                         required
+                        v-model="form.tipo"
                       >
                         <option value="Administrativo">Administrativo</option>
                         <option value="Gabinete">Gabinete</option>
@@ -60,6 +61,7 @@
                         class="form-control"
                         id="department_responsavel"
                         name="responsavel"
+                        v-model="form.responsavel"
                         required
                       />
                     </div>
@@ -73,6 +75,7 @@
                         id="department_email"
                         name="email"
                         placeholder="email@provedor.com"
+                        v-model="form.email"
                         required
                       />
                     </div>
@@ -89,6 +92,7 @@
                         id="department_telefone"
                         name="telefone"
                         placeholder="84 9 9999 8888"
+                        v-model="form.telefone"
                         required
                       />
                     </div>
@@ -103,6 +107,7 @@
                         id="department_ramal"
                         name="ramal"
                         placeholder="5599"
+                        v-model="form.ramal"
                         required
                       />
                     </div>
@@ -113,9 +118,9 @@
                     <div class="col-lg-4 text-end">
                       <button
                         type="submit"
-                        class="btn btn-success text-white mt-2 w-100"
+                        class="btn btn-info text-white mt-2 w-100"
                       >
-                        Cadastrar Departamento
+                        Atualizar Departamento
                       </button>
                     </div>
                   </div>
@@ -124,24 +129,58 @@
             </div>
           </div>
         </div>
-      </div> -->
+      </div>
     </section>
   </Layout>
 </template>
 
 <script>
 import Layout from "../../Layout";
+import { Head } from "@inertiajs/inertia-vue3";
 
 export default {
-  props: {
-      data: data,
+  components: {
+    Head,
   },
-  components: { Layout },
-  data: () => ({
-    csrf: document
-      .querySelector('meta[name="csrf-token"]')
-      .getAttribute("content"),
-  }),
+
+  layout: Layout,
+
+  props: {
+    department: Object,
+  },
+
+  remember: "form",
+
+  data() {
+    return {
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content"),
+      form: {
+        nome: this.department.nome,
+        tipo: this.department.tipo,
+        responsavel: this.department.responsavel,
+        email: this.department.email,
+        telefone: this.department.telefone,
+        ramal: this.department.ramal,
+      },
+    };
+  },
+
+  methods: {
+    submit() {
+      var data = new FormData()
+      data.append("nome", this.form.nome)
+      data.append("tipo", this.form.tipo)
+      data.append("responsavel", this.form.responsavel)
+      data.append("email", this.form.email)
+      data.append("telefone", this.form.telefone)
+      data.append("ramal", this.form.ramal)
+      data.append("_method", 'put')
+
+      this.$inertia.post('/departments/' + this.department.id, data)
+    }
+  }
 };
 </script>
 

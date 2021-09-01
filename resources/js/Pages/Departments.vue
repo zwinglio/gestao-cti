@@ -6,6 +6,7 @@
 
     <section class="tickets">
       <div class="container">
+        {{ success }}
         <h1>Departamentos</h1>
         <Link
           class="btn btn-primary btn-sm me-1 mt-3"
@@ -37,7 +38,7 @@
               <td>{{ department.responsavel }}</td>
               <td>{{ department.tipo }}</td>
               <td>
-                <Link :href="$route('department.edit', {id: department.id})" :data="teste" class="btn btn-sm btn-info">Editar</Link>
+                <Link :href="'/departments/'+department.id+'/edit'" class="btn btn-sm btn-info">Editar</Link>
                 <ButtonDelete :data="department" :routePrefix="'departments'">
                   Departamento: {{ department.nome }}
                 </ButtonDelete>
@@ -58,6 +59,7 @@ import { Link } from "@inertiajs/inertia-vue3";
 export default {
   props: {
     departments: Object,
+    success: String,
   },
 
   components: { Layout, Link, ButtonDelete },

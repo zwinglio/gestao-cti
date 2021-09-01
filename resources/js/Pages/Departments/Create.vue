@@ -17,7 +17,7 @@
           <div class="col-lg-8">
             <div class="card">
               <div class="card-body">
-                <form method="POST" action="/departments/store">
+                <form @submit.prevent="submit">
                   <div class="row mb-4">
                     <div class="col-lg-8">
                       <label for="department_nome" class="form-label"
@@ -28,6 +28,7 @@
                         class="form-control"
                         id="department_nome"
                         name="nome"
+                        v-model="form.nome"
                         required
                       />
                     </div>
@@ -40,6 +41,7 @@
                         name="tipo"
                         id="department_tipo"
                         class="form-select"
+                        v-model="form.tipo"
                         required
                       >
                         <option value="Administrativo">Administrativo</option>
@@ -59,6 +61,7 @@
                         class="form-control"
                         id="department_responsavel"
                         name="responsavel"
+                        v-model="form.responsavel"
                         required
                       />
                     </div>
@@ -72,6 +75,7 @@
                         id="department_email"
                         name="email"
                         placeholder="email@provedor.com"
+                        v-model="form.email"
                         required
                       />
                     </div>
@@ -87,6 +91,7 @@
                         class="form-control"
                         id="department_telefone"
                         name="telefone"
+                        v-model="form.telefone"
                         placeholder="84 9 9999 8888"
                         required
                       />
@@ -101,6 +106,7 @@
                         class="form-control"
                         id="department_ramal"
                         name="ramal"
+                        v-model="form.ramal"
                         placeholder="5599"
                         required
                       />
@@ -132,13 +138,39 @@
 import Layout from "../../Layout";
 
 export default {
-  props: {},
-  components: { Layout },
-  data: () => ({
-    csrf: document
-      .querySelector('meta[name="csrf-token"]')
-      .getAttribute("content"),
-  }),
+  layout: Layout,
+
+  remember: "form",
+
+  data() {
+    return {
+      csrf: document
+        .querySelector('meta[name="csrf-token"]')
+        .getAttribute("content"),
+      form: {
+        nome: null,
+        tipo: null,
+        responsavel: null,
+        email: null,
+        telefone: null,
+        ramal: null,
+      },
+    };
+  },
+
+  methods: {
+    submit() {
+      var data = new FormData()
+      data.append("nome", this.form.nome)
+      data.append("tipo", this.form.tipo)
+      data.append("responsavel", this.form.responsavel)
+      data.append("email", this.form.email)
+      data.append("telefone", this.form.telefone)
+      data.append("ramal", this.form.ramal)
+
+      this.$inertia.post('/departments/', data)
+    }
+  }
 };
 </script>
 
