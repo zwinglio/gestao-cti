@@ -38,7 +38,11 @@
               <td>{{ department.responsavel }}</td>
               <td>{{ department.tipo }}</td>
               <td>
-                <Link :href="'/departments/'+department.id+'/edit'" class="btn btn-sm btn-info">Editar</Link>
+                <Link
+                  :href="'/departments/' + department.id + '/edit'"
+                  class="btn btn-sm btn-info"
+                  >Editar</Link
+                >
                 <ButtonDelete :data="department" :routePrefix="'departments'">
                   Departamento: {{ department.nome }}
                 </ButtonDelete>
@@ -59,7 +63,6 @@ import { Link } from "@inertiajs/inertia-vue3";
 export default {
   props: {
     departments: Object,
-    success: String,
   },
 
   components: { Layout, Link, ButtonDelete },
@@ -67,6 +70,7 @@ export default {
     csrf: document
       .querySelector('meta[name="csrf-token"]')
       .getAttribute("content"),
+    success: null,
   }),
 
   method: {},

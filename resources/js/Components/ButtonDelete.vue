@@ -42,11 +42,10 @@
             Cancelar
           </button>
           <Link
-            as="button"
             class="btn btn-danger"
             :href="`/${routePrefix}/${data.id}`"
-            method="delete"
-            data-bs-dismiss="modal"
+            method="del-ete"
+            replace
           >
             Deletar
           </Link>
