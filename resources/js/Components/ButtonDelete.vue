@@ -44,8 +44,9 @@
           <Link
             class="btn btn-danger"
             :href="`/${routePrefix}/${data.id}`"
-            method="del-ete"
+            method="delete"
             replace
+            @click="`deleteData(${data.id})`"
           >
             Deletar
           </Link>
@@ -64,7 +65,9 @@ export default {
   },
   props: ["data", "routePrefix"],
   methods: {
-    deleteData: {},
+    deleteData(){
+      console.log("oi")
+    },
   },
 };
 </script>

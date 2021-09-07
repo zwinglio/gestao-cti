@@ -19,7 +19,9 @@ __webpack_require__.r(__webpack_exports__);
   },
   props: ["data", "routePrefix"],
   methods: {
-    deleteData: {}
+    deleteData: function deleteData() {
+      console.log("oi");
+    }
   }
 });
 
@@ -189,7 +191,10 @@ function render(_ctx, _cache, $props, $setup, $data, $options) {
     "class": "btn btn-danger",
     href: "/".concat($props.routePrefix, "/").concat($props.data.id),
     method: "delete",
-    replace: ""
+    replace: "",
+    onClick: _cache[0] || (_cache[0] = function ($event) {
+      return "deleteData(".concat($props.data.id, ")");
+    })
   }, {
     "default": (0,vue__WEBPACK_IMPORTED_MODULE_0__.withCtx)(function () {
       return [_hoisted_10];
