@@ -3,7 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-8">
+        <div class="col-md-10">
         @if(!empty($mensagem))
 <div class="alert alert-success">
     {{ $mensagem }}
@@ -18,8 +18,25 @@
                 </div>
 
                 <div class="card-body">
-                    
-                    Aqui os departamentos
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Departamento</th>
+                                <th>Responsável</th>
+                                <th>Ações</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                         @foreach ($departments as $department)
+                             <tr>
+                                 <td>{{ $department->id }}</td>
+                                 <td>{{ $department->name }}</td>
+                                 <td>{{ $department->responsible }}</td>
+                             </tr>
+                         @endforeach
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
