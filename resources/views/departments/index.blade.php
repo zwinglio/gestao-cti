@@ -18,21 +18,33 @@
                 </div>
 
                 <div class="card-body">
-                    <table class="table table-striped">
-                        <thead>
+                    <table class="table table-striped table-hover">
+                        <thead class="table-light">
                             <tr>
-                                <th>#</th>
-                                <th>Departamento</th>
-                                <th>Responsável</th>
-                                <th>Ações</th>
+                                <th class="col-lg-1" scope="col">#</th>
+                                <th class="col-lg-6" scope="col">Departamento</th>
+                                <th class="col-lg-3 d-none d-lg-table-cell" scope="col">Responsável</th>
+                                <th class="col-lg-2" scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
                          @foreach ($departments as $department)
                              <tr>
-                                 <td>{{ $department->id }}</td>
+                                 <th scope="row">{{ $department->id }}</th>
                                  <td>{{ $department->name }}</td>
-                                 <td>{{ $department->responsible }}</td>
+                                 <td class="d-none d-lg-table-cell">{{ $department->responsible }}</td>
+                                 <td class="d-flex justify-content-end">
+                                     <a href="#" class="btn btn-sm btn-primary text-white me-2">
+                                         <i class="bi bi-pencil-square"></i>
+                                     </a>
+                                     <form action="{{ route('departments.destroy', $department->id) }}" method="POST">
+                                         @csrf
+                                         @method('DELETE')
+                                         <button class="btn btn-sm btn-danger text-white">
+                                             <i class="bi bi-trash"></i>
+                                         </button>
+                                     </form>
+                                 </td>
                              </tr>
                          @endforeach
                         </tbody>

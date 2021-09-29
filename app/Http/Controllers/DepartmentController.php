@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\DepartmentStoreRequest;
 use App\Models\Department;
 use Illuminate\Http\Request;
+use MongoDB\Driver\Session;
 
 class DepartmentController extends Controller
 {
@@ -41,7 +42,7 @@ class DepartmentController extends Controller
     {
         Department::create($request->validated());
 
-        $request->session()->flash(
+        session()->flash(
             'mensagem',
             "O {$request->name} foi criado com sucesso!"
         );
@@ -89,8 +90,15 @@ class DepartmentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Department $department)
     {
-        //
+        $department->delete();
+
+        session()->flash(
+            'mensagem',
+            "O {$department->name} foi deletado com sucesso!"
+        );
+
+        return redirect()->route('departments.index');
     }
 }
